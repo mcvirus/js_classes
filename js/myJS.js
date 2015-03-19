@@ -130,7 +130,7 @@ function showReport(cows, hens, pigs) {
 var report = showReport(10, 5, 89);
 
 //Структура данных: объекты и массивы
-// quiz1
+// Сумма диапазона
 function range(startArr, endArr, step) {
     var array = [];
     var step = Math.abs(step) || 1;
@@ -156,7 +156,7 @@ var arr = range(5, 2,-1);
 console.log(arr);
 console.log(sum(arr));
 
-//quiz2
+//Обращаем вспять массив
 var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
 function reverseArray(array){
     var reverseArray = [];
@@ -178,3 +178,5 @@ function reverseArrayInPlace(array){
     return array;
 }
 console.log('reversed', reverseArrayInPlace(arr));
+
+//Список
