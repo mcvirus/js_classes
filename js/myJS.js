@@ -155,3 +155,26 @@ function sum(array) {
 var arr = range(5, 2,-1);
 console.log(arr);
 console.log(sum(arr));
+
+//quiz2
+var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+function reverseArray(array){
+    var reverseArray = [];
+    for(var i in array){
+        reverseArray.unshift(array[i]);
+    }
+    return reverseArray;
+}
+console.log('original', arr);
+console.log('reversed', reverseArray(arr));
+
+function reverseArrayInPlace(array){
+    var maxPosition = array.length -1;
+    for(var i = 0; i < (maxPosition / 2); i++){
+        var temp = array[i];
+        array[i] = array[maxPosition - i];
+        array[maxPosition - i] = temp;
+    }
+    return array;
+}
+console.log('reversed', reverseArrayInPlace(arr));
