@@ -218,6 +218,13 @@ function nth(list, n) {
 }
 
 console.log(nth(list, 1));
+
+function deepEqual(first, second){
+   if(first === second){
+       return true;
+   }
+}
+
 /*
  var listOfObjects = [];
  var a = ["car", "bike", "scooter"];
