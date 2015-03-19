@@ -52,8 +52,8 @@ function quiz3() {
 quiz3();
 //quiz4
 function min(value1, value2) {
-    var min = (value1 < value2) ? value1 : value2;
-    return min;
+
+    return (value1 < value2) ? value1 : value2;
 }
 console.log(min(0, -10));
 //==========================
@@ -138,7 +138,7 @@ function range(startArr, endArr, step) {
         for (i = startArr; i <= endArr; i += step) {
             array.push(i);
         }
-    } else if (startArr > endArr){
+    } else if (startArr > endArr) {
         for (i = startArr; i >= endArr; i -= step) {
             array.push(i);
         }
@@ -152,15 +152,15 @@ function sum(array) {
     }
     return sum;
 }
-var arr = range(5, 2,-1);
+var arr = range(5, 2, -1);
 console.log(arr);
 console.log(sum(arr));
 
 //Обращаем вспять массив
 var arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
-function reverseArray(array){
+function reverseArray(array) {
     var reverseArray = [];
-    for(var i in array){
+    for (var i in array) {
         reverseArray.unshift(array[i]);
     }
     return reverseArray;
@@ -168,9 +168,9 @@ function reverseArray(array){
 console.log('original', arr);
 console.log('reversed', reverseArray(arr));
 
-function reverseArrayInPlace(array){
-    var maxPosition = array.length -1;
-    for(var i = 0; i < (maxPosition / 2); i++){
+function reverseArrayInPlace(array) {
+    var maxPosition = array.length - 1;
+    for (var i = 0; i < (maxPosition / 2); i++) {
         var temp = array[i];
         array[i] = array[maxPosition - i];
         array[maxPosition - i] = temp;
@@ -180,3 +180,51 @@ function reverseArrayInPlace(array){
 console.log('reversed', reverseArrayInPlace(arr));
 
 //Список
+
+var array = [1, 2, 3];
+function arrayToList(array){
+    var list = null;
+    for(var i = array.length -1; i >= 0; i--){
+        list =prepend(array[i],list);
+
+    }
+    return list;
+}
+
+function prepend( value, rest){
+    return {value : value, rest : rest};
+}
+
+var list = arrayToList(array);
+console.log(list.toSource());
+
+function listToArray(list){
+    var array = [];
+    for(var node = list; node; node = node.rest){
+        array.push(node.value);
+    }
+    return array;
+}
+console.log(listToArray(list));
+
+
+function nth(list, n) {
+    if (!list)
+        return undefined;
+    else if (n == 0)
+        return list.value;
+    else
+        return nth(list.rest, n - 1);
+}
+
+console.log(nth(list, 1));
+/*
+ var listOfObjects = [];
+ var a = ["car", "bike", "scooter"];
+ a.forEach(function(entry) {
+ var singleObj = {}
+ singleObj['type'] = 'vehicle';
+ singleObj['value'] = entry;
+ listOfObjects.push(singleObj);
+ });
+ */
