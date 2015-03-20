@@ -182,25 +182,25 @@ console.log('reversed', reverseArrayInPlace(arr));
 //Список
 
 var array = [1, 2, 3];
-function arrayToList(array){
-    var list = null;
-    for(var i = array.length -1; i >= 0; i--){
-        list =prepend(array[i],list);
 
+function arrayToList(array) {
+    var list = null;
+    for (var i = array.length - 1; i >= 0; i--) {
+        list = prepend(array[i], list);
     }
     return list;
 }
 
-function prepend( value, rest){
-    return {value : value, rest : rest};
+function prepend(value, rest) {
+    return {value: value, rest: rest};
 }
 
 var list = arrayToList(array);
 console.log(list.toSource());
 
-function listToArray(list){
+function listToArray(list) {
     var array = [];
-    for(var node = list; node; node = node.rest){
+    for (var node = list; node; node = node.rest) {
         array.push(node.value);
     }
     return array;
@@ -219,11 +219,33 @@ function nth(list, n) {
 
 console.log(nth(list, 1));
 
-function deepEqual(first, second){
-   if(first === second){
-       return true;
-   }
+function deepEqual(first, second) {
+    if (first === second) {
+        return true;
+    }
+ if (first == null || typeof(first) != "object" ||
+ second == null || typeof(second) != "object") {
+        return false;
+    }
+    var propertiesInFirst = 0;
+    var propertiesInSecond = 0;
+
+    for (var property in first) {
+        propertiesInFirst += 1;
+    }
+    for (var property in second) {
+        propertiesInSecond += 1;
+        if (!(property in first) || !deepEqual(first[property], second[property])) {
+            return false;
+        }
+
+    }
+    return propertiesInFirst == propertiesInSecond;
 }
+
+var obj = {here: {is: 'an'}, object: 2};
+var b = 3;
+console.log(deepEqual(obj, {here: {is: 'an'}, object: 2}));
 
 /*
  var listOfObjects = [];
@@ -235,3 +257,9 @@ function deepEqual(first, second){
  listOfObjects.push(singleObj);
  });
  */
+function greaterThan(m){
+    return function(n){
+        return n > m;
+    }
+}
+console.log(greaterThan(10)(11));
