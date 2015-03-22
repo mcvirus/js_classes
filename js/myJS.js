@@ -183,30 +183,31 @@ console.log('reversed', reverseArrayInPlace(arr));
 
 var array = [1, 2, 3];
 
-function arrayToList(array) {
+function arrayToList(array){
     var list = null;
-    for (var i = array.length - 1; i >= 0; i--) {
+
+    for(var i = array.length - 1; i >= 0; i--){
         list = prepend(array[i], list);
     }
     return list;
 }
 
-function prepend(value, rest) {
-    return {value: value, rest: rest};
+function prepend(value, rest){
+    return {'value' : value, 'rest' : rest};
 }
 
 var list = arrayToList(array);
 console.log(list.toSource());
 
-function listToArray(list) {
+function listToArray(list){
     var array = [];
-    for (var node = list; node; node = node.rest) {
+    for(var node = list; node; node = node.rest){
         array.push(node.value);
     }
     return array;
 }
-console.log(listToArray(list));
 
+console.log(listToArray(list));
 
 function nth(list, n) {
     if (!list)
@@ -220,32 +221,36 @@ function nth(list, n) {
 console.log(nth(list, 1));
 
 function deepEqual(first, second) {
-    if (first === second) {
-        return true;
-    }
- if (first == null || typeof(first) != "object" ||
- second == null || typeof(second) != "object") {
+  if(first ===second){
+      return true;
+  }
+    if(first == null || typeof first !='object' ||
+    second == null || typeof second !='object'){
         return false;
     }
     var propertiesInFirst = 0;
     var propertiesInSecond = 0;
 
-    for (var property in first) {
+    for(var properties in first){
         propertiesInFirst += 1;
     }
-    for (var property in second) {
-        propertiesInSecond += 1;
-        if (!(property in first) || !deepEqual(first[property], second[property])) {
+    for(var properties in second){
+        propertiesInSecond +=1;
+        if(!(properties in first) || !deepEqual(first[properties], second[properties])){
             return false;
         }
 
     }
-    return propertiesInFirst == propertiesInSecond;
+return propertiesInFirst == propertiesInSecond;
 }
 
-var obj = {here: {is: 'an'}, object: 2};
-var b = 3;
-console.log(deepEqual(obj, {here: {is: 'an'}, object: 2}));
+var obj = {here: {is: "an"}, object: 2};
+console.log(deepEqual(obj, obj));
+// → true
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// → false
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+// → true
 
 /*
  var listOfObjects = [];
