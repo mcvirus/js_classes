@@ -181,7 +181,7 @@ console.log('reversed', reverseArrayInPlace(arr));
 
 //Список
 
-var array = [1, 2, 3];
+var array = [1, 2, 3, 4];
 
 function arrayToList(array){
     var list = null;
@@ -197,7 +197,7 @@ function prepend(value, rest){
 }
 
 var list = arrayToList(array);
-console.log(list.toSource());
+//console.log(list.toSource());
 
 function listToArray(list){
     var array = [];
@@ -268,3 +268,45 @@ function greaterThan(m){
     }
 }
 console.log(greaterThan(10)(11));
+
+//Свертка
+
+
+
+jQuery(function($){
+    $('#btn1').bind('click', function( ){
+        $('#square').fadeToggle('slow');
+
+    });
+
+    $('#btn2').click(function() {
+        $('#square').animate({
+            'opacity' : 0.25,
+            'width': 'toggle',
+            'height' : 'toggle'
+        },{
+            'duration' : 5000
+        });
+
+    });
+});
+
+jQuery(function($){
+    $("#test a").mouseover(function(){
+        $("#test span").animate({
+
+
+            height: "toggle"
+        },{
+            duration : 100
+        })
+    })
+    $("#test a").mouseout(function(){
+        $("#test span").animate({
+
+           height: "toggle"
+        },{
+            duration: 100
+        })
+    })
+})
