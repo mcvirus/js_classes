@@ -43,4 +43,21 @@ var makeChessBoard = function (size) {
 var min = function(numberA, numberB) {
     return (numberA > numberB) ? numberB : numberA;
 }
-console.log(min(1, -9));
+//console.log(min(1, -9));
+
+//3-2
+var isEven = function(number) {
+    
+    if (number === 0) {
+        return true;
+    } else if (number === 1) {
+        return false;
+    } else if (number < 0) {
+        return isEven (-number);
+    } else {
+        return isEven(number - 2);
+    }
+
+//return (number % 2 === 0) ? true : false;
+}
+//console.log(isEven(-4));
