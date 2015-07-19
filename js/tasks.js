@@ -38,3 +38,9 @@ var makeChessBoard = function (size) {
     console.log(board);
 }
 //makeChessBoard(8);
+
+//3-1
+var min = function(numberA, numberB) {
+    return (numberA > numberB) ? numberB : numberA;
+}
+console.log(min(1, -9));
