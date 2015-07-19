@@ -21,3 +21,20 @@ var fizzBuzz = function () {
     }
 }
 //fizzBuzz();
+
+//2-3
+var makeChessBoard = function (size) {
+    var board = "";
+    for (var i = 1; i <= size; i++) {
+        for (var j = 1; j <= size; j++) {
+            if ((i + j) % 2 === 0) {
+                board += "#";
+            } else {
+                board += " ";
+            }
+        }
+        board += "\n";
+    }
+    console.log(board);
+}
+//makeChessBoard(8);
