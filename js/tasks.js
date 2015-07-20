@@ -91,20 +91,57 @@ function sum(numberArr) {
 //4-2
 function reverseArray(inputArray) {
     var reversedArray = [];
-    for (var i = inputArray.length -1; i >= 0 ; i--) {
+    for (var i = inputArray.length - 1; i >= 0 ; i--) {
         reversedArray.push(inputArray[i]);
     }
     return reversedArray;
 }
 
 function reverseArrayInPlace(inputArray) {
-    for (var i = 0; i < Math.floor(inputArray.length / 2); i++) {
+    for (var i = 0; i < Math.floor(inputArray.length / 2) ; i++) {
         var old = inputArray[i];
         inputArray[i] = inputArray[inputArray.length - 1 - i];
-        inputArray[inputArray.length -1 - i] = old;
+        inputArray[inputArray.length - 1 - i] = old;
     }
     return inputArray;
 }
 
 //console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8, 11]));
 //console.log(reverseArray(["A", "B", "C"]));
+
+//4-3
+
+function arrayToList(inputArray) {
+    var list = null;
+    for (var i = inputArray.length - 1; i >= 0; i--) {
+        list = {
+            value: inputArray[i],
+            rest: list
+        };
+    }
+    return list;
+}
+//console.log(arrayToList([10, 20, 30]));
+function listToArray(list) {
+    var arr = [];
+    for (var node = list; node; node = node.rest) {
+        arr.push(node.value);
+    }
+    return arr;
+}
+
+//console.log(listToArray(arrayToList([10, 20, 30])));
+function prepend(value, list) {
+    return {value : value, rest:list}
+}
+//console.log(prepend(10, prepend(20, null)));
+
+function nth(list, position) {
+    if (!list)
+        return undefined;
+    else if (position === 0)
+        return list.value;
+    else
+        return nth(list.rest, position - 1);
+}
+console.log(nth(arrayToList([10, 20, 30]), 1));
