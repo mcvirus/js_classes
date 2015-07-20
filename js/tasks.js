@@ -132,7 +132,7 @@ function listToArray(list) {
 
 //console.log(listToArray(arrayToList([10, 20, 30])));
 function prepend(value, list) {
-    return {value : value, rest:list}
+    return { value: value, rest: list }
 }
 //console.log(prepend(10, prepend(20, null)));
 
@@ -144,4 +144,36 @@ function nth(list, position) {
     else
         return nth(list.rest, position - 1);
 }
-console.log(nth(arrayToList([10, 20, 30]), 1));
+//console.log(nth(arrayToList([10, 20, 30]), 1));
+
+//4-4
+
+function deepEqual(valueA, valueB) {
+    if (valueA === valueB) {
+        return true;
+    };
+    if (valueA == null && typeof(valueA) != "object" ||
+        valueB == null && typeof(valueB) != "object") {
+        return false;
+    };
+    var propsInvalueA = 0,
+        propsInvalueB = 0;
+    for (var prop in valueA) {
+        propsInvalueA++;
+    }
+    for (var prop in valueB) {
+        propsInvalueB++;
+        if (!(prop in valueA) || !deepEqual(valueA[prop], valueB[prop])) {
+            return false;
+        }
+    }
+    return propsInvalueA === propsInvalueB;
+}
+var obj = { here: { is: "an" }, object: 2 };
+//console.log(deepEqual(obj, obj));
+// → true
+//console.log(deepEqual(obj, { here: 1, object: 2 }));
+// → false
+//console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
+// → true
+
