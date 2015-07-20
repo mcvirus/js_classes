@@ -87,3 +87,24 @@ function sum(numberArr) {
 }
 //console.log(range(5, 2, -1));
 //console.log(sum(range(1, 10, 2)));
+
+//4-2
+function reverseArray(inputArray) {
+    var reversedArray = [];
+    for (var i = inputArray.length -1; i >= 0 ; i--) {
+        reversedArray.push(inputArray[i]);
+    }
+    return reversedArray;
+}
+
+function reverseArrayInPlace(inputArray) {
+    for (var i = 0; i < Math.floor(inputArray.length / 2); i++) {
+        var old = inputArray[i];
+        inputArray[i] = inputArray[inputArray.length - 1 - i];
+        inputArray[inputArray.length -1 - i] = old;
+    }
+    return inputArray;
+}
+
+//console.log(reverseArrayInPlace([1, 2, 3, 4, 5, 6, 7, 8, 11]));
+//console.log(reverseArray(["A", "B", "C"]));
