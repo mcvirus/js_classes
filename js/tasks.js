@@ -177,3 +177,10 @@ var obj = { here: { is: "an" }, object: 2 };
 //console.log(deepEqual(obj, { here: { is: "an" }, object: 2 }));
 // → true
 
+//5-1
+function flatten(inputArr) {
+    return inputArr.reduce(function (flat, current) {
+        return flat.concat(current);
+    });
+}
+console.log(flatten([[1, 2, 3], [4, 5], [6]]));
