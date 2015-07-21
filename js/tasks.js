@@ -183,4 +183,31 @@ function flatten(inputArr) {
         return flat.concat(current);
     });
 }
-console.log(flatten([[1, 2, 3], [4, 5], [6]]));
+//console.log(flatten([[1, 2, 3], [4, 5], [6]]));
+
+//5-4
+function every(inputArr, predicate) {
+    for (var i = 0; i < inputArr.length; i++) {
+        if (!predicate(inputArr[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+console.log(every([NaN, NaN, NaN], isNaN));
+// → true
+console.log(every([NaN, NaN, 4], isNaN));
+// → false
+
+function some(inputArr, predicate) {
+    for (var i = 0; i < inputArr.length; i++) {
+        if (predicate(inputArr[i])) {
+            return true;
+        }
+    }
+    return false;
+}
+console.log(some([NaN, 3, 4], isNaN));
+// → true
+console.log(some([2, 3, 4], isNaN));
+// → false
