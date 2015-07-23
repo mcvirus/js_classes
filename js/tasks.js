@@ -194,9 +194,9 @@ function every(inputArr, predicate) {
     }
     return true;
 }
-console.log(every([NaN, NaN, NaN], isNaN));
+//console.log(every([NaN, NaN, NaN], isNaN));
 // → true
-console.log(every([NaN, NaN, 4], isNaN));
+//console.log(every([NaN, NaN, 4], isNaN));
 // → false
 
 function some(inputArr, predicate) {
@@ -207,7 +207,35 @@ function some(inputArr, predicate) {
     }
     return false;
 }
-console.log(some([NaN, 3, 4], isNaN));
+//console.log(some([NaN, 3, 4], isNaN));
 // → true
-console.log(some([2, 3, 4], isNaN));
+//console.log(some([2, 3, 4], isNaN));
 // → false
+
+//6-1
+function Vector(x, y) {
+    this.x = x;
+    this.y = y;
+}
+
+Vector.prototype.plus = function (otherVector) {
+    return new Vector(this.x + otherVector.x, this.y + otherVector.y);
+};
+
+Vector.prototype.minus = function (otherVector) {
+    return new Vector(this.x - otherVector.x, this.y - otherVector.y);
+
+};
+
+Object.defineProperty(Vector.prototype, "length", {
+    get: function() {
+        var length = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
+        return length;
+    }
+});
+//console.log(new Vector(1, 2).plus(new Vector(2, 3)));
+    // → Vector{x: 3, y: 5}
+  //  console.log(new Vector(1, 2).minus(new Vector(2, 3)));
+// → Vector{x: -1, y: -1}
+    //console.log(new Vector(3, 4).length);
+    // → 5
