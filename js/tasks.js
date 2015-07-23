@@ -1,4 +1,5 @@
-﻿// 2-1
+﻿"use strict";
+// 2-1
 function triangle() {
     for (var line = "#"; line.length < 8; line += "#") {
         console.log(line);
@@ -283,7 +284,6 @@ RangeSeq.prototype.next = function() {
 RangeSeq.prototype.current = function () {
     return this.pos;
 }
-
 //logFive(new ArraySeq([1, 2]));
 // → 1
 // → 2
