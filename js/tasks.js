@@ -153,8 +153,8 @@ function deepEqual(valueA, valueB) {
     if (valueA === valueB) {
         return true;
     };
-    if (valueA == null && typeof(valueA) != "object" ||
-        valueB == null && typeof(valueB) != "object") {
+    if (valueA == null && typeof (valueA) != "object" ||
+        valueB == null && typeof (valueB) != "object") {
         return false;
     };
     var propsInvalueA = 0,
@@ -229,16 +229,16 @@ Vector.prototype.minus = function (otherVector) {
 };
 
 Object.defineProperty(Vector.prototype, "length", {
-    get: function() {
+    get: function () {
         var length = Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2));
         return length;
     }
 });
 //console.log(new Vector(1, 2).plus(new Vector(2, 3)));
-    // → Vector{x: 3, y: 5}
-  //  console.log(new Vector(1, 2).minus(new Vector(2, 3)));
+// → Vector{x: 3, y: 5}
+//  console.log(new Vector(1, 2).minus(new Vector(2, 3)));
 // → Vector{x: -1, y: -1}
-    //console.log(new Vector(3, 4).length);
+//console.log(new Vector(3, 4).length);
 // → 5
 
 //6-3
@@ -257,14 +257,14 @@ function ArraySeq(array) {
     this.array = array;
 }
 
-ArraySeq.prototype.next = function() {
+ArraySeq.prototype.next = function () {
     if (this.pos >= this.array.length - 1) {
         return false;
     }
     this.pos++;
     return true;
 }
-ArraySeq.prototype.current = function() {
+ArraySeq.prototype.current = function () {
     return this.array[this.pos];
 }
 
@@ -274,7 +274,7 @@ function RangeSeq(from, to) {
 
 }
 
-RangeSeq.prototype.next = function() {
+RangeSeq.prototype.next = function () {
     if (this.pos > this.to) {
         return false;
     }
@@ -293,3 +293,26 @@ RangeSeq.prototype.current = function () {
 // → 102
 // → 103
 // → 104
+
+//8-1
+
+function MultiplicatorUnitFailure() { }
+function primitiveMultiply(a, b) {
+    if (Math.random() < 0.5)
+        return a * b;
+    else
+        throw new MultiplicatorUnitFailure();
+}
+function reliableMultiply(a, b) {
+    for (; ;) {
+        try {
+            return primitiveMultiply(a, b);
+        } catch (e) {
+            if (!(e instanceof MultiplicatorUnitFailure)) {
+                throw e;
+            }
+        }
+    }
+}
+console.log(reliableMultiply(8, 8));
+// → 64
